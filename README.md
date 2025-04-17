@@ -1,0 +1,2 @@
+### What is this?
+I recently started using the [Harsh habit tracker](https://github.com/wakatara/harsh). Which I found tremendously useful. But, sometimes you just want to see your habit progress visualized in a prettier form. True to the original project, I made a minimal web app with Next.js and shadcn meant to visualize your progress. All you need to do is upload your log and habits file and it renders your habit tracking history in a pretty analytics dashboard. Happy tracking!
