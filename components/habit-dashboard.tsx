@@ -14,6 +14,8 @@ import { processHabitData } from "@/lib/data-processor"
 import type { HabitData, HabitFrequency, LogEntry } from "@/lib/types"
 import { FileUpload } from "@/components/file-upload"
 import { DemoData } from "@/components/demo-data"
+import { Github } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function HabitDashboard() {
   const [logEntries, setLogEntries] = useState<LogEntry[]>([])
@@ -57,12 +59,25 @@ export function HabitDashboard() {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="flex flex-col space-y-6">
+      <div className="flex justify-between items-center mb-6">
         <div className="flex flex-col space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">Habit Analytics Dashboard</h1>
           <p className="text-muted-foreground">Track your habits and visualize your progress over time.</p>
         </div>
-
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          <a
+            href="https://github.com/wakatara/harsh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+            aria-label="GitHub repository"
+          >
+            <Github className="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+      <div className="flex flex-col space-y-6">
         {!hasData ? (
           <Card>
             <CardHeader>
@@ -78,6 +93,7 @@ export function HabitDashboard() {
                   <FileUpload
                     id="log-file"
                     onFileContent={handleLogFileUpload}
+                    accept=".txt,.log"
                     label="Upload Log File"
                   />
                   {logEntries.length > 0 && (
@@ -91,6 +107,7 @@ export function HabitDashboard() {
                   <FileUpload
                     id="habits-file"
                     onFileContent={handleHabitsFileUpload}
+                    accept=".txt"
                     label="Upload Habits File"
                   />
                   {habitFrequencies.length > 0 && (
